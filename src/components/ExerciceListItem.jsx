@@ -1,13 +1,16 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Link } from "expo-router";
+import { StyleSheet, Text, View ,Pressable} from "react-native";
 const ExerciceListItem = ({ item }) => {
   return (
-    <View style={styles.exerciceContainer}>
-      <Text style={styles.exerciceName}>{item.name}</Text>
-      <Text style={styles.exerciceSubtitle}>
-        <Text style={styles.subValue}>{item.muscle}</Text> |{" "}
-        <Text style={styles.subValue}>{item.equipment}</Text>
-      </Text>
-    </View>
+    <Link href={`/${item.name}`} asChild>
+      <Pressable style={styles.exerciceContainer}>
+        <Text style={styles.exerciceName}>{item.name}</Text>
+        <Text style={styles.exerciceSubtitle}>
+          <Text style={styles.subValue}>{item.muscle}</Text> |{" "}
+          <Text style={styles.subValue}>{item.equipment}</Text>
+        </Text>
+      </Pressable>
+    </Link>
   );
 };
 export default ExerciceListItem;
@@ -17,7 +20,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     gap: 5,
-    marginHorizontal : 2,
+    marginHorizontal: 2,
 
     // shadow
     shadowColor: "#000",
